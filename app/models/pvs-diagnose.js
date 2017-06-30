@@ -1,52 +1,54 @@
 'use strict';
 
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+const mongoose = require('mongoose');
+const sequenceGenerator = require('mongoose-sequence-plugin');
 
-var diagnoseSchema = new Schema({
-    complaint :
-        {
-            type:String,
-            required:true
-        },
-    visitType :
-        {
-            type:String,
-            required:false
-        },
-    remarks :
-        {
-            type:String
-        },
-    visitDate :
-        {
-            type:Date
-        },
-    doctor :
-        {
-            type : String,
-            required:true
-        },
-    weight :
-        {
-            type:Number
-        },
-    height :
-        {
-            type:Number
-        },
-    sysbp :
-        {
-            type:Number
-        },
-    diastbp :
-        {
-            type:Number
-        },
-    temperature :
-        {
-            type:Number
-        }
+const Schema = mongoose.Schema;
+
+const diagnoseSchema = new Schema({
+
+    diagnoseId: {
+        type: String
+    },
+    name: {
+        type: String
+    },
+    complaint: {
+        type: String
+    },
+    visitType: {
+        type: String
+    },
+    remarks: {
+        type: String
+    },
+    visitDate: {
+        type: Date
+    },
+    doctor: {
+        type: String,
+    },
+    weight: {
+        type: Number
+    },
+    height: {
+        type: Number
+    },
+    sysbp: {
+        type: Number
+    },
+    diastbp: {
+        type: Number
+    },
+    temperature: {
+        type: Number
+    }
+});
+
+diagnoseSchema.plugin(sequenceGenerator,{
+    field:'diagnoseId',
+    startAt:'001',
+    prefix: 'PAT-'
 });
 
 module.exports = mongoose.model('patientDiagnosis', diagnoseSchema);
