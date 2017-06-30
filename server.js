@@ -12,10 +12,14 @@ const app = express();
 // Requiring Models
 require('./app/models/user.model');
 require('./app/models/pr-patient.model.js');
+require('./app/models/doctor.model');
+require('./app/models/nurse.model');
 
 // Requiring Routers
 const UserRouter = require('./app/routes/user.route');
 const PatientRouter = require('./app/routes/pr-patient.route.js');
+const DoctorRouter = require('./app/routes/doctor.route');
+const NurseRouter = require('./app/routes/nurse.route');
 
 // Enabling CORS Support
 app.use(function (req, res, next) {
@@ -55,6 +59,8 @@ app.get('/', (req, res) => {
 // Returning other Requests
 app.use('/api/users', UserRouter);
 app.use('/api/patients', PatientRouter);
+app.use('/api/doctors', DoctorRouter);
+app.use('/api/nurses', NurseRouter);
 
 // Create Server and Listen for Requests
 app.listen(port, err => {
