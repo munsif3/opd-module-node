@@ -39,21 +39,8 @@ Router.post('/', (req, res) => {
     })
 });
 
-//
-// Router.post('/:id/games', (req, res) => {
-//     let game = new GameModel(req.body);
-//     const developerId = req.params.id;
-//     game.developer = developerId;
-//     game.save().then(gamedb => {
-//         return DeveloperModel.findByIdAndUpdate(developerId, {$push: {"games": gamedb}});
-//     }).then(() => {
-//         return GameModel.findById(developerId).populate("games").exec;
-//     }).then(developerdb => {
-//         res.json(developerdb);
-//     }).catch(err => {
-//         console.error(err);
-//         res.sendStatus(500);
-//     });
-// });
+UserModel.count({role: "Doctor"}).exec();
+UserModel.count({role: "Nurse"}).exec();
+UserModel.count({role: "Administrator"}).exec();
 
 module.exports = Router;

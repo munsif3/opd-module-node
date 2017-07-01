@@ -18,6 +18,8 @@
     "mongoose": "^4.9.6",
     "mongoose-sequence": "^3.2.0",
     "mongoose-sequence-plugin": "^1.0.5",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "should": "^11.2.1",
+    "supertest": "^3.0.0"
   }
 }

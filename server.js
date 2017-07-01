@@ -14,12 +14,18 @@ require('./app/models/user.model');
 require('./app/models/pr-patient.model.js');
 require('./app/models/doctor.model');
 require('./app/models/nurse.model');
+require('./app/models/pvs-diagnose');
+require('./app/models/pvs-laboratory');
+require('./app/models/pvs-prescription');
 
 // Requiring Routers
 const UserRouter = require('./app/routes/user.route');
 const PatientRouter = require('./app/routes/pr-patient.route.js');
 const DoctorRouter = require('./app/routes/doctor.route');
 const NurseRouter = require('./app/routes/nurse.route');
+const DiagnoseRouter = require('./app/routes/pvs-diagnose.route');
+const LabRouter = require('./app/routes/pvs-laboratory.route');
+const PrescRouter = require('./app/routes/pvs-prescription.route');
 
 // Enabling CORS Support
 app.use(function (req, res, next) {
@@ -61,6 +67,10 @@ app.use('/api/users', UserRouter);
 app.use('/api/patients', PatientRouter);
 app.use('/api/doctors', DoctorRouter);
 app.use('/api/nurses', NurseRouter);
+app.use('/api/visitList', DiagnoseRouter);
+app.use('/api/laboratory', LabRouter);
+app.use('/api/prescription', PrescRouter);
+
 
 // Create Server and Listen for Requests
 app.listen(port, err => {
